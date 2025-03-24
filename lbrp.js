@@ -395,10 +395,8 @@ const steps = [
 // Add this code to handle step navigation
 document.addEventListener('DOMContentLoaded', function() {
     const stepContent = document.getElementById('step-content');
-    const stepTitle = document.getElementById('step-title');
     const progressDots = document.querySelectorAll('.progress-dot');
     const ritualProgress = document.getElementById('ritual-progress');
-    const stepIcon = document.getElementById('step-icon');
     
     let currentStep = 0;
     let stepHistory = []; // Array to store step history
@@ -435,7 +433,6 @@ document.addEventListener('DOMContentLoaded', function() {
         currentStep = index;
         
         // Update title and step number
-        stepTitle.textContent = steps[index].title;
         const stepNumberElement = document.querySelector('.step-number');
         if (stepNumberElement) {
             stepNumberElement.textContent = `Step ${index + 1} of ${steps.length}`;
@@ -443,9 +440,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Update icon if needed
         const iconMatch = steps[index].content.match(/<i class="([^"]+)"/);
-        if (iconMatch && stepIcon) {
-            stepIcon.innerHTML = `<i class="${iconMatch[1]}" style="color: var(--accent-color); opacity: 0.8; font-size: 2rem;"></i>`;
-        }
+      
         
         // Clear the step content area
         stepContent.innerHTML = '';
@@ -491,10 +486,11 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Add current step title
         const currentTitleElement = document.createElement('h3');
-        currentTitleElement.textContent = `Step ${index + 1} of ${steps.length}: ${steps[index].title}`;
+        currentTitleElement.innerHTML = `${steps[index].title}<br><span style="font-size: 0.8rem;font-style: italic;">Step ${index + 1} of ${steps.length}</span>`;
         currentTitleElement.style.color = 'var(--accent-color)';
         currentTitleElement.style.marginBottom = '15px';
         currentTitleElement.style.fontSize = '1.3rem';
+        currentTitleElement.style.textAlign = 'left';
         
         // Create current step content
         const currentStepElement = document.createElement('div');
