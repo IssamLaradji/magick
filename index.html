@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Issam Laradji | Mystic Practitioner & Spiritual Student</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Light rays -->
+    <div class="light-rays"></div>
+    
+    <!-- Floating particles -->
+    <div class="particles" id="particles"></div>
+    
+    <!-- Celestial elements -->
+    <div class="celestial-orb moon"></div>
+    <div class="celestial-orb nebula"></div>
+    
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">ISSAM LARADJI</div>
+                <div class="nav-links">
+                    <a href="#" class="active">Home</a>
+                    <a href="rituals.html">Rituals</a>
+                    <a href="#">Tools</a>
+                    <a href="#">Courses</a>
+                    <a href="#">Blog</a>
+                </div>
+                <button class="theme-toggle">
+                    <i class="fas fa-moon">🌙</i>
+                </button>
+            </nav>
+        </div>
+    </header>
+    
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero">
+                    <div class="hero-content">
+                        <h1 class="hero-title">Issam Laradji</h1>
+                        <h2 class="hero-subtitle">Mystic Practitioner & Spiritual Guide</h2>
+                        <p class="hero-description">
+                            I guide seekers through the veils of reality, sharing ancient wisdom
+                            and mystical practices to help you discover your true potential.
+                        </p>
+                        <div class="cta-buttons">
+                            <button class="btn btn-primary">
+                                <span>✨</span> Explore My Work
+                            </button>
+                            <button class="btn btn-secondary">
+                                Contact Me
+                            </button>
+                        </div>
+                    </div>
+                    <div class="hero-image">
+                        <div class="profile-image"></div>
+                    </div>
+                </div>
+                
+                <!-- Scroll indicator -->
+                <div class="scroll-indicator">
+                    <div class="scroll-text">Discover More</div>
+                    <div class="scroll-arrow">↓</div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Rituals Section -->
+    <section class="rituals-section">
+        <div class="container">
+            <h2 class="section-title">Essential Rituals</h2>
+            <p class="section-description">Explore these foundational mystical practices to enhance your spiritual journey.</p>
+            
+            <div class="ritual-cards">
+                <div class="ritual-card">
+                    <div class="ritual-icon">✧</div>
+                    <h3>Lesser Banishing Ritual of the Pentagram</h3>
+                    <p>A fundamental ritual for cleansing your space of negative energies and establishing a sacred circle.</p>
+                    <a href="lbrp.html" class="ritual-link">Learn More</a>
+                </div>
+                
+                <div class="ritual-card">
+                    <div class="ritual-icon">⚜️</div>
+                    <h3>Middle Pillar Ritual</h3>
+                    <p>Align your energy centers and connect with divine light through this powerful centering practice.</p>
+                    <a href="rituals.html#mpr" class="ritual-link">Learn More</a>
+                </div>
+                
+                <div class="ritual-card">
+                    <div class="ritual-icon">☀️</div>
+                    <h3>Bornless Ritual Headless</h3>
+                    <p>An advanced invocation for connecting with your Higher Self and divine consciousness.</p>
+                    <a href="rituals.html#brh" class="ritual-link">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <script>
+        // Create floating particles
+        function createParticles() {
+            const particles = document.getElementById('particles');
+            const count = 50;
+            
+            for (let i = 0; i < count; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Random position
+                const x = Math.random() * 100;
+                const y = Math.random() * 100;
+                
+                // Random size
+                const size = Math.random() * 5 + 2;
+                
+                particle.style.left = `${x}%`;
+                particle.style.top = `${y}%`;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                // Random opacity
+                particle.style.opacity = Math.random() * 0.5 + 0.3;
+                
+                // Random animation delay
+                particle.style.animationDelay = `${Math.random() * 15}s`;
+                
+                particles.appendChild(particle);
+            }
+            
+            // Create clouds
+            createClouds();
+            
+            // Create stars
+            createStars();
+        }
+        
+        function createClouds() {
+            const particles = document.getElementById('particles');
+            const count = 5;
+            
+            for (let i = 0; i < count; i++) {
+                const cloud = document.createElement('div');
+                cloud.classList.add('cloud');
+                
+                // Random position
+                const y = Math.random() * 70 + 10;
+                
+                // Random size
+                const width = Math.random() * 200 + 100;
+                const height = Math.random() * 80 + 40;
+                
+                cloud.style.top = `${y}%`;
+                cloud.style.width = `${width}px`;
+                cloud.style.height = `${height}px`;
+                
+                // Random opacity
+                cloud.style.opacity = Math.random() * 0.3 + 0.1;
+                
+                // Random animation delay
+                cloud.style.animationDelay = `${Math.random() * 30}s`;
+                cloud.style.animationDuration = `${Math.random() * 30 + 30}s`;
+                
+                particles.appendChild(cloud);
+            }
+        }
+        
+        function createStars() {
+            const particles = document.getElementById('particles');
+            const count = 80;
+            
+            for (let i = 0; i < count; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                
+                // Random position
+                const x = Math.random() * 100;
+                const y = Math.random() * 100;
+                
+                // Random size (smaller than particles)
+                const size = Math.random() * 3 + 1;
+                
+                star.style.left = `${x}%`;
+                star.style.top = `${y}%`;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                
+                // Random opacity
+                star.style.opacity = Math.random() * 0.7 + 0.3;
+                
+                // Random animation delay
+                star.style.animationDelay = `${Math.random() * 3}s`;
+                
+                particles.appendChild(star);
+            }
+        }
+        
+        // Call the function when the page loads
+        window.addEventListener('load', createParticles);
+        
+        // Smooth scroll for the scroll indicator
+        document.addEventListener('DOMContentLoaded', function() {
+            const scrollIndicator = document.querySelector('.scroll-indicator');
+            if (scrollIndicator) {
+                scrollIndicator.addEventListener('click', function() {
+                    window.scrollBy({
+                        top: window.innerHeight,
+                        behavior: 'smooth'
+                    });
+                });
+            }
+        });
+    </script>
+
+    <!-- Create a new file for rituals.html -->
+    <script>
+        // Redirect to rituals page when clicking on Rituals link
+        document.addEventListener('DOMContentLoaded', function() {
+            const ritualsLink = document.querySelector('.nav-links a[href="#"]');
+            if (ritualsLink && ritualsLink.textContent === 'Rituals') {
+                ritualsLink.href = 'rituals.html';
+            }
+        });
+    </script>
+</body>
+</html>
