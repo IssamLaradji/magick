@@ -438,9 +438,8 @@ document.addEventListener('DOMContentLoaded', function() {
             stepNumberElement.textContent = `Step ${index + 1} of ${steps.length}`;
         }
         
-        // Update icon if needed
+        // Extract icon class from step content
         const iconMatch = steps[index].content.match(/<i class="([^"]+)"/);
-      
         
         // Clear the step content area
         stepContent.innerHTML = '';
@@ -484,21 +483,40 @@ document.addEventListener('DOMContentLoaded', function() {
         currentStepContainer.style.padding = '20px';
         currentStepContainer.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.1)';
         
+        // Create title container with flexbox to position icon and text
+        const titleContainer = document.createElement('div');
+        titleContainer.style.display = 'flex';
+        titleContainer.style.alignItems = 'center';
+        titleContainer.style.marginBottom = '15px';
+        
+        // Add icon if found in the content
+        if (iconMatch) {
+            const iconElement = document.createElement('i');
+            iconElement.className = iconMatch[1];
+            iconElement.style.color = 'var(--accent-color)';
+            iconElement.style.fontSize = '2rem';
+            iconElement.style.marginRight = '15px';
+            iconElement.style.opacity = '0.8';
+            titleContainer.appendChild(iconElement);
+        }
+        
         // Add current step title
         const currentTitleElement = document.createElement('h3');
         currentTitleElement.innerHTML = `${steps[index].title}<br><span style="font-size: 0.8rem;font-style: italic;">Step ${index + 1} of ${steps.length}</span>`;
         currentTitleElement.style.color = 'var(--accent-color)';
-        currentTitleElement.style.marginBottom = '15px';
+        currentTitleElement.style.margin = '0';
         currentTitleElement.style.fontSize = '1.3rem';
         currentTitleElement.style.textAlign = 'left';
+        
+        titleContainer.appendChild(currentTitleElement);
         
         // Create current step content
         const currentStepElement = document.createElement('div');
         currentStepElement.className = 'current-step';
         currentStepElement.innerHTML = steps[index].content;
         
-        // Add title and content to container
-        currentStepContainer.appendChild(currentTitleElement);
+        // Add title container and content to main container
+        currentStepContainer.appendChild(titleContainer);
         currentStepContainer.appendChild(currentStepElement);
         
         // Add to the end of the content (bottom)
