@@ -5,6 +5,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Issam Laradji | Mystic Practitioner & Spiritual Student</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Mobile and responsive styles */
+        @media (max-width: 768px) {
+            /* Navigation */
+            nav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .nav-right {
+                width: 100%;
+                margin-top: 15px;
+                justify-content: space-between;
+            }
+            
+            /* Hero section */
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+                padding: 30px 0;
+                min-height: auto;
+            }
+            
+            .hero-content {
+                margin-top: 30px;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .profile-image {
+                width: 250px;
+                height: 250px;
+            }
+            
+            .cta-buttons {
+                justify-content: center;
+            }
+            
+            /* Rituals section */
+            .ritual-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .ritual-card {
+                width: 100%;
+                max-width: 350px;
+                margin-bottom: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Light rays -->
@@ -21,16 +93,15 @@
         <div class="container">
             <nav>
                 <div class="logo">ISSAM LARADJI</div>
-                <div class="nav-links">
-                    <a href="#" class="active">Home</a>
-                    <a href="rituals.html">Rituals</a>
-                    <a href="#">Tools</a>
-                    <a href="#">Courses</a>
-                    <a href="#">Blog</a>
+                <div class="nav-right">
+                    <div class="nav-links">
+                        <a href="#" class="active">Home</a>
+                        <a href="#rituals-section">Rituals</a>
+                    </div>
+                    <button class="theme-toggle">
+                        <i class="fas fa-moon">🌙</i>
+                    </button>
                 </div>
-                <button class="theme-toggle">
-                    <i class="fas fa-moon">🌙</i>
-                </button>
             </nav>
         </div>
     </header>
@@ -40,11 +111,11 @@
             <div class="container">
                 <div class="hero">
                     <div class="hero-content">
-                        <h1 class="hero-title">Issam Laradji</h1>
-                        <h2 class="hero-subtitle">Mystic Practitioner & Spiritual Guide</h2>
+                        <h1 class="hero-title">Frater Nexus</h1>
+                        <h2 class="hero-subtitle">Mystic Practitioner & Spiritual Student</h2>
                         <p class="hero-description">
-                            I guide seekers through the veils of reality, sharing ancient wisdom
-                            and mystical practices to help you discover your true potential.
+                            This is my journey in learning magickal practices, where I explore
+                            ancient wisdom and mystical arts to unlock my true potential.
                         </p>
                         <div class="cta-buttons">
                             <button class="btn btn-primary">
@@ -56,7 +127,9 @@
                         </div>
                     </div>
                     <div class="hero-image">
-                        <div class="profile-image"></div>
+                        <div class="profile-image">
+                            <img src="images/issam.jpeg" alt="Issam Laradji" class="profile-img">
+                        </div>
                     </div>
                 </div>
                 
@@ -70,7 +143,7 @@
     </main>
     
     <!-- Rituals Section -->
-    <section class="rituals-section">
+    <section class="rituals-section" id="rituals-section">
         <div class="container">
             <h2 class="section-title">Essential Rituals</h2>
             <p class="section-description">Explore these foundational mystical practices to enhance your spiritual journey.</p>
@@ -80,21 +153,21 @@
                     <div class="ritual-icon">✧</div>
                     <h3>Lesser Banishing Ritual of the Pentagram</h3>
                     <p>A fundamental ritual for cleansing your space of negative energies and establishing a sacred circle.</p>
-                    <a href="lbrp.html" class="ritual-link">Learn More</a>
+                    <a href="rituals/lbrp.html" class="ritual-link">Learn More</a>
                 </div>
                 
                 <div class="ritual-card">
                     <div class="ritual-icon">⚜️</div>
                     <h3>Middle Pillar Ritual</h3>
                     <p>Align your energy centers and connect with divine light through this powerful centering practice.</p>
-                    <a href="rituals.html#mpr" class="ritual-link">Learn More</a>
+                    <a href="rituals/mpr.html" class="ritual-link">Learn More</a>
                 </div>
                 
                 <div class="ritual-card">
                     <div class="ritual-icon">☀️</div>
-                    <h3>Bornless Ritual Headless</h3>
-                    <p>An advanced invocation for connecting with your Higher Self and divine consciousness.</p>
-                    <a href="rituals.html#brh" class="ritual-link">Learn More</a>
+                    <h3>Lesser Invoking Ritual of the Pentagram</h3>
+                    <p>A ritual to invoke positive energies and establish a sacred space for your spiritual work.</p>
+                    <a href="rituals/lirp.html" class="ritual-link">Learn More</a>
                 </div>
             </div>
         </div>
@@ -201,8 +274,9 @@
         // Call the function when the page loads
         window.addEventListener('load', createParticles);
         
-        // Smooth scroll for the scroll indicator
+        // Smooth scroll for all navigation links and the scroll indicator
         document.addEventListener('DOMContentLoaded', function() {
+            // Handle scroll indicator click
             const scrollIndicator = document.querySelector('.scroll-indicator');
             if (scrollIndicator) {
                 scrollIndicator.addEventListener('click', function() {
@@ -212,17 +286,21 @@
                     });
                 });
             }
-        });
-    </script>
-
-    <!-- Create a new file for rituals.html -->
-    <script>
-        // Redirect to rituals page when clicking on Rituals link
-        document.addEventListener('DOMContentLoaded', function() {
-            const ritualsLink = document.querySelector('.nav-links a[href="#"]');
-            if (ritualsLink && ritualsLink.textContent === 'Rituals') {
-                ritualsLink.href = 'rituals.html';
-            }
+            
+            // Handle navigation links with hash (#) for smooth scrolling
+            const navLinks = document.querySelectorAll('.nav-links a[href^="#"]:not([href="#"])');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
         });
     </script>
 </body>

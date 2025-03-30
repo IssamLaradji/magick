@@ -456,18 +456,44 @@ document.addEventListener('DOMContentLoaded', function() {
             previousStepContainer.style.paddingBottom = '15px';
             previousStepContainer.style.borderBottom = '1px solid rgba(106, 61, 181, 0.2)';
             
-            // Add step title to the history
+            // Extract icon for history step
+            const historyIconMatch = historyStep.content.match(/<i class="([^"]+)"/);
+            
+            // Add step title with icon to the history
+            const titleContainer = document.createElement('div');
+            titleContainer.style.display = 'flex';
+            titleContainer.style.alignItems = 'center';
+            titleContainer.style.marginBottom = '10px';
+            
+            // Add icon if found
+            if (historyIconMatch) {
+                const iconElement = document.createElement('i');
+                iconElement.className = historyIconMatch[1];
+                iconElement.style.color = 'var(--accent-color)';
+                iconElement.style.fontSize = '1.5rem';
+                iconElement.style.marginRight = '10px';
+                iconElement.style.opacity = '0.8';
+                titleContainer.appendChild(iconElement);
+            }
+            
+            // Add title text
             const titleElement = document.createElement('h3');
             titleElement.textContent = `Step ${historyIndex + 1}: ${historyStep.title}`;
             titleElement.style.color = 'var(--accent-color)';
-            titleElement.style.marginBottom = '10px';
+            titleElement.style.margin = '0';
             
-            // Create the step content
+            titleContainer.appendChild(titleElement);
+            previousStepContainer.appendChild(titleContainer);
+            
+            // Create the step content (without the step-image div)
             const historyContent = document.createElement('div');
             historyContent.className = 'previous-step';
-            historyContent.innerHTML = historyStep.content;
             
-            previousStepContainer.appendChild(titleElement);
+            // Parse the content to remove the step-image div
+            let parsedContent = historyStep.content;
+            parsedContent = parsedContent.replace(/<div class="step-image"[^>]*>[\s\S]*?<\/div>/g, '');
+            historyContent.innerHTML = parsedContent;
+            
             previousStepContainer.appendChild(historyContent);
             
             // Add to the history section
@@ -510,10 +536,14 @@ document.addEventListener('DOMContentLoaded', function() {
         
         titleContainer.appendChild(currentTitleElement);
         
-        // Create current step content
+        // Create current step content (without the step-image div)
         const currentStepElement = document.createElement('div');
         currentStepElement.className = 'current-step';
-        currentStepElement.innerHTML = steps[index].content;
+        
+        // Parse the content to remove the step-image div
+        let parsedContent = steps[index].content;
+        parsedContent = parsedContent.replace(/<div class="step-image"[^>]*>[\s\S]*?<\/div>/g, '');
+        currentStepElement.innerHTML = parsedContent;
         
         // Add title container and content to main container
         currentStepContainer.appendChild(titleContainer);
